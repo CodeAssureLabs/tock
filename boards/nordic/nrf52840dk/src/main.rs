@@ -8,9 +8,17 @@
 #![no_main]
 #![deny(missing_docs)]
 
+use kernel::component::Component;
 use kernel::debug;
 use kernel::platform::{KernelResources, SyscallDriverLookup};
 use kernel::{capabilities, create_capability};
+use nrf52840::gpio::Pin;
+
+// Arduino header SPI pins (D11-D13), routed to SPIM2 for the direct SPI
+// capsule. SPIM0 is already muxed for the on-board external flash.
+const DIRECT_SPI_MOSI: Pin = Pin::P1_13;
+const DIRECT_SPI_MISO: Pin = Pin::P1_14;
+const DIRECT_SPI_CLK: Pin = Pin::P1_15;
 
 // State for loading and holding applications.
 // How should the kernel respond when a process faults.
@@ -85,6 +93,21 @@ pub unsafe fn main() {
 
     let (eui64_driver, ieee802154_driver, udp_driver) =
         nrf52840dk_lib::ieee802154_udp(board_kernel, default_peripherals, mux_alarm);
+
+    //--------------------------------------------------------------------------
+    // DIRECT SPI (prototype)
+    //--------------------------------------------------------------------------
+
+    // Nothing consumes it yet; it is wired here so the capsule is exercised on
+    // real hardware. These pins are also exposed to userspace as GPIO 11-13,
+    // so they must not be driven from userspace while this capsule is in use.
+    let _direct_spi = nrf52_components::NrfDirectSpiComponent::new(
+        &default_peripherals.nrf52.spim2,
+        DIRECT_SPI_MOSI,
+        DIRECT_SPI_MISO,
+        DIRECT_SPI_CLK,
+    )
+    .finalize(nrf52_components::nrf_direct_spi_component_static!());
 
     let platform = Platform {
         base: base_platform,
