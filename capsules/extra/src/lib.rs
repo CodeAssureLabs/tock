@@ -120,3 +120,5 @@ pub mod usb;
 pub mod usb_hid_driver;
 pub mod virtualizers;
 pub mod wifi;
+
+pub mod counter;
