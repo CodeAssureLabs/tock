@@ -28,11 +28,11 @@ required_companions:
 invariants:
   - id: capsules-no-unsafe
     within: "capsules/**/*.rs"
-    forbid_pattern: '\\bunsafe\\b'
+    forbid_pattern: '\bunsafe\b'
     reason: "capsules are written in safe Rust; unsafe belongs in chips/ and kernel/"
     check: detect_only
   - id: kernel-no-std
     within: "kernel/**/*.rs"
-    forbid_pattern: '\\buse std::'
+    forbid_pattern: '\buse std::'
     reason: "the kernel is no_std"
     check: detect_only
