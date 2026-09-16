@@ -9,6 +9,7 @@ authors.workspace = true
 edition.workspace = true
 
 [dependencies]
+nrf52840dk_lib = { path = "../../boards/nordic/nrf52840dk" }
 cortexm4f = { path = "../../arch/cortex-m4f" }
 kernel = { path = "../../kernel" }
 enum_primitive = { path = "../../libraries/enum_primitive" }
