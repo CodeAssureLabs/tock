@@ -9,6 +9,7 @@ authors.workspace = true
 edition = "2024"
 
 [dependencies]
+nrf52 = { path = "../../chips/nrf52" }
 kernel = { path = "../../kernel" }
 enum_primitive = { path = "../../libraries/enum_primitive" }
 tickv = { path = "../../libraries/tickv" }
