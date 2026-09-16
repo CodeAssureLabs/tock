@@ -1,0 +1,12 @@
+[package]
+name = "fakeboard"
+version.workspace = true
+authors.workspace = true
+build = "../build.rs"
+edition.workspace = true
+
+[dependencies]
+kernel = { path = "../../kernel" }
+
+[lints]
+workspace = true
