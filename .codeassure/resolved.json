@@ -1,0 +1,50 @@
+{
+  "artifact_version": 1,
+  "source_manifest_version": 1,
+  "layer_map": {},
+  "path_globs": [
+    {
+      "glob": "boards/**",
+      "layer": "entry"
+    },
+    {
+      "glob": "kernel/**",
+      "layer": "service"
+    },
+    {
+      "glob": "capsules/**",
+      "layer": "service"
+    },
+    {
+      "glob": "chips/**",
+      "layer": "integration"
+    },
+    {
+      "glob": "arch/**",
+      "layer": "integration"
+    },
+    {
+      "glob": "libraries/**",
+      "layer": "utils"
+    }
+  ],
+  "compiled_rules": {
+    "allowed": {
+      "entry": [
+        "service",
+        "integration",
+        "utils",
+        "config"
+      ],
+      "service": [
+        "utils",
+        "config"
+      ],
+      "integration": [
+        "service",
+        "utils",
+        "config"
+      ]
+    }
+  }
+}
