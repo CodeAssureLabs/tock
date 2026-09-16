@@ -26,3 +26,5 @@ pub mod usbd;
 pub use nrf5x::{
     aes, constants, gpio, peripheral_interrupts, pinmux, rtc, temperature, timer, trng,
 };
+
+pub mod board_hook;
