@@ -39,6 +39,7 @@ pub mod dac;
 pub mod date_time;
 pub mod debug_process_restart;
 pub mod dfrobot_rainfall_sensor;
+pub mod direct_spi;
 pub mod distance;
 pub mod ethernet_tap;
 pub mod eui64;
@@ -120,5 +121,3 @@ pub mod usb;
 pub mod usb_hid_driver;
 pub mod virtualizers;
 pub mod wifi;
-
-pub mod nrf_direct_spi;

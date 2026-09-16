@@ -4,8 +4,10 @@
 
 #![no_std]
 
+pub mod direct_spi;
 pub mod startup;
 
+pub use self::direct_spi::{NrfDirectSpi, NrfDirectSpiComponent};
 pub use self::startup::{
     NrfClockComponent, NrfStartupComponent, UartChannel, UartChannelComponent, UartPins,
 };

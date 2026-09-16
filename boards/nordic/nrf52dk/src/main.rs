@@ -100,10 +100,10 @@ const UART_TXD: Pin = Pin::P0_06;
 const UART_CTS: Option<Pin> = Some(Pin::P0_07);
 const UART_RXD: Pin = Pin::P0_08;
 
-// SPI not used, but keep pins around
-const _SPI_MOSI: Pin = Pin::P0_22;
-const _SPI_MISO: Pin = Pin::P0_23;
-const _SPI_CLK: Pin = Pin::P0_24;
+// SPI pins, routed to SPIM0 for the direct SPI capsule.
+const SPI_MOSI: Pin = Pin::P0_22;
+const SPI_MISO: Pin = Pin::P0_23;
+const SPI_CLK: Pin = Pin::P0_24;
 
 /// UART Writer
 pub mod io;
@@ -481,6 +481,17 @@ pub unsafe fn start() -> (
     .finalize(components::analog_comparator_component_static!(
         AnalogComparatorHw
     ));
+
+    // Direct (unmultiplexed) access to SPIM0 for the prototype direct SPI
+    // capsule. Nothing consumes it yet; it is wired here so the capsule is
+    // exercised on real hardware.
+    let _direct_spi = nrf52_components::NrfDirectSpiComponent::new(
+        &base_peripherals.spim0,
+        SPI_MOSI,
+        SPI_MISO,
+        SPI_CLK,
+    )
+    .finalize(nrf52_components::nrf_direct_spi_component_static!());
 
     nrf52_components::NrfClockComponent::new(&base_peripherals.clock).finalize(());
 
