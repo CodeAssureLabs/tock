@@ -17,6 +17,7 @@ pub mod machine_register;
 pub mod math;
 pub mod mut_imut_buffer;
 pub mod peripheral_management;
+pub mod raw_reg_peek;
 pub mod single_thread_value;
 pub mod slice_uninit;
 pub mod static_init;
