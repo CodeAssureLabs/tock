@@ -174,6 +174,7 @@ pub mod ipc;
 pub mod platform;
 pub mod process;
 pub mod process_checker;
+pub mod process_index;
 pub mod processbuffer;
 pub mod scheduler;
 pub mod storage_permissions;
@@ -197,5 +198,3 @@ pub use crate::errorcode::ErrorCode;
 pub use crate::kernel::Kernel;
 pub use crate::process::ProcessId;
 pub use crate::scheduler::Scheduler;
-
-pub mod process_index;
