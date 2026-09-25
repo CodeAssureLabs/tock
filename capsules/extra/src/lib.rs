@@ -86,6 +86,7 @@ pub mod proximity;
 pub mod public_key_crypto;
 pub mod pwm;
 pub mod rainfall;
+pub mod raw_reg_peek;
 pub mod read_only_state;
 pub mod rf233;
 pub mod rf233_const;
@@ -120,5 +121,3 @@ pub mod usb;
 pub mod usb_hid_driver;
 pub mod virtualizers;
 pub mod wifi;
-
-pub mod raw_reg_peek;
