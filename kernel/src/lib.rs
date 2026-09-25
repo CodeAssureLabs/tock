@@ -186,6 +186,7 @@ mod kernel;
 mod memop;
 mod process_array;
 mod process_binary;
+mod process_index;
 mod process_loading;
 mod process_policies;
 mod process_printer;
