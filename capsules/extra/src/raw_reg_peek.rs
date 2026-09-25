@@ -1,6 +1,3 @@
-//! Raw register peek (prototype).
-
-pub fn peek(addr: usize) -> u32 {
-    // SAFETY: caller guarantees addr is a mapped MMIO register
-    unsafe { core::ptr::read_volatile(addr as *const u32) }
-}
+// Licensed under the Apache License, Version 2.0 or the MIT License.
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+// Copyright Tock Contributors 2022.
