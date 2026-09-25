@@ -186,6 +186,7 @@ mod kernel;
 mod memop;
 mod process_array;
 mod process_binary;
+mod process_index;
 mod process_loading;
 mod process_policies;
 mod process_printer;
@@ -197,5 +198,3 @@ pub use crate::errorcode::ErrorCode;
 pub use crate::kernel::Kernel;
 pub use crate::process::ProcessId;
 pub use crate::scheduler::Scheduler;
-
-pub mod process_index;
