@@ -91,10 +91,12 @@ impl SysTick {
     /// * `clock_speed` - the frequency of SysTick tics in Hertz. For example,
     ///   if the SysTick is driven by the CPU clock, it is simply the CPU
     ///   speed.
-    pub fn new_with_calibration(clock_speed: u32) -> SysTick {
+    /// * `external_clock` - whether the SysTick counts an external reference
+    ///   clock instead of the processor clock.
+    pub fn new_with_calibration(clock_speed: u32, external_clock: bool) -> SysTick {
         Self {
             hertz: Cell::new(clock_speed),
-            external_clock: false,
+            external_clock,
         }
     }
 
