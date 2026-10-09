@@ -168,6 +168,8 @@ pub mod deferred_call;
 pub mod dynamic_binary_storage;
 pub mod errorcode;
 pub mod grant;
+pub mod gtprobe_ping;
+pub mod gtprobe_pong;
 pub mod hil;
 pub mod introspection;
 pub mod ipc;
