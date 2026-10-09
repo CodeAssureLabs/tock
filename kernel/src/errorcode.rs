@@ -118,8 +118,5 @@ impl From<ErrorCode> for Result<(), ErrorCode> {
 /// values, but does not use value 0 by convention. This allows us to use 0 as
 /// success in StatusCode.
 pub fn into_statuscode(r: Result<(), ErrorCode>) -> usize {
-    match r {
-        Ok(()) => 0,
-        Err(e) => e as usize,
-    }
+    r.map_or_else(|e| e as usize, |()| 0)
 }
