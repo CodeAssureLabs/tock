@@ -507,7 +507,7 @@ pub unsafe fn initialize_debug_gpio_unsafe<P: ThreadIdProvider>() {
 }
 
 /// Map an array of GPIO pins to use for debugging.
-pub fn assign_gpios(gpio: &'static [&'static dyn hil::gpio::Pin]) {
+pub fn assign_debug_gpios(gpio: &'static [&'static dyn hil::gpio::Pin]) {
     DEBUG_GPIOS.get().map(|gpio_array_cell| {
         gpio_array_cell.replace(gpio);
     });
