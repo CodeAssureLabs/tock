@@ -693,10 +693,13 @@ fn write_header(
     writer: &mut &dyn DebugWriter,
     (file, line): &(&'static str, u32),
 ) -> Result<(), core::fmt::Error> {
-    let count = DEBUG_WRITER_COUNT.get().map_or(0, |count| {
-        count.increment();
-        count.get()
-    });
+    let count = match DEBUG_WRITER_COUNT.get() {
+        Some(count) => {
+            count.increment();
+            count.get()
+        }
+        None => 0,
+    };
 
     writer.write_fmt(format_args!("TOCK_DEBUG({}): {}:{}: ", count, file, line))
 }
