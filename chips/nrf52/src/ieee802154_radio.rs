@@ -64,6 +64,7 @@
 // 8/21/23
 
 use crate::timer::TimerAlarm;
+use components::ieee802154::CRYPT_SIZE;
 use core::cell::Cell;
 use kernel::ErrorCode;
 use kernel::deferred_call::{DeferredCall, DeferredCallClient};
@@ -82,6 +83,9 @@ const RADIO_BASE: StaticRef<RadioRegisters> =
 const ACK_FLAG: u8 = 0b00100000;
 
 pub const IEEE802154_PAYLOAD_LENGTH: usize = 255;
+/// Size of the crypt scratch buffer the board-level 802.15.4 component allocates
+/// for this radio.
+pub const IEEE802154_CRYPT_BUF_SIZE: usize = CRYPT_SIZE;
 pub const IEEE802154_BACKOFF_PERIOD: usize = 320; //microseconds = 20 symbols
 pub const IEEE802154_ACK_TIME: usize = 512; //microseconds = 32 symbols
 pub const IEEE802154_MAX_POLLING_ATTEMPTS: u8 = 4;
